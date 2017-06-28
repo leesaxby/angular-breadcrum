@@ -1,0 +1,8 @@
+<ul class="uk-breadcrumb">
+    <li ng-repeat="crum in $ctrl.crums"
+        ng-class="{'uk-active': $last}">
+        <!--<span ng-if="$last">{{crum}}</span>-->
+        <!--<a ng-if="!$last">{{crum}}</a>-->
+        <a ui-sref="{{crum}}">{{$ctrl.getCrum(crum)}}</a>
+    </li>
+</ul>
