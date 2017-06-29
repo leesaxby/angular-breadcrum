@@ -3,26 +3,25 @@ import styles from './breadcrum.scss';
 
 export default {
     templateUrl: breadcrum,
-    controller ($state, $stateParams) {
+    controller ($state) {
         const ctrl = this;
 
         ctrl.$onInit = () => {
-
-            // console.log($state)
-//            ctrl.crums = $stateParams.breadcrum || ['Facility', 'Loan'];
-            ctrl.crums = Object.keys($state.$current.includes);
+            ctrl.crums = getCrums()
         };
 
-        ctrl.getCrum = (crum) => {
-            let str;
-            if (crum.indexOf('.') !== -1) {
-                str = crum.substr(crum.indexOf('.') + 1)
-            } else {
-              console.log(crum)
-                str = crum;
-            }
-            return str;
-        }
-    },
+        const getCrums = () => {
+            return Object.keys($state.$current.includes)
+                    .map(stateName => {
+                        // If state params contain custom name use that else use formatted state name.
+                        let crum = formatCrum(stateName);
+                        let text = $state.params[crum] || crum;
+                        return {stateName, text};
+                    });
+        };
 
-};
+        const formatCrum = (crum) => {
+            return crum.includes('.') ? crum.substring(crum.lastIndexOf('.') + 1) : crum
+        };
+    }
+}

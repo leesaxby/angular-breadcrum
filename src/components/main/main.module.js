@@ -5,12 +5,9 @@ import main from './main/main.component.js';
 export default angular.module('main', [router])
         .component('main', main)
         .config(function ($stateProvider) {
-
             $stateProvider
                 .state('main', {
                     url: '/main',
-
-
                     views: {
                         'main@': {
                             component: 'main'
@@ -21,7 +18,6 @@ export default angular.module('main', [router])
                     }
                 })
                 .state('main.childOne', {
-
                     url: '/childOne',
                     views: {
                         'main@': {
@@ -30,11 +26,26 @@ export default angular.module('main', [router])
                         'breadcrum@': {
                             component: 'breadcrum',
                         }
+                    },
+                    params: {
+                        childOne: 'Child One'
                     }
-
+                })
+                .state('main.childOne.childOneA', {
+                    url: '/childOneA',
+                    views: {
+                        'main@': {
+                            component: 'childOneA'
+                        },
+                        'breadcrum@': {
+                            component: 'breadcrum',
+                        }
+                    },
+                    params: {
+                        childOneA: 'Child One A'
+                    }
                 })
                 .state('main.childTwo', {
-
                     url: '/childTwo',
                     views: {
                         'main@': {
@@ -44,6 +55,5 @@ export default angular.module('main', [router])
                             component: 'breadcrum'
                         }
                     }
-
                 })
 }).name;
