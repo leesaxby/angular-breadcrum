@@ -4,6 +4,8 @@ import styles from './childOne.scss';
 export default {
   templateUrl: childOne,
   controller($state) {
-    $state.go('.', {childOne: 'This is child ones name'}, {notify: false});
+    this.$onInit = () => {
+        $state.go('.', {childOne: 'This is child ones name'});
+    }
   }
 };

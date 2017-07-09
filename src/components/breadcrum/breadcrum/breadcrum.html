@@ -2,6 +2,6 @@
     <li ng-if="crum.text"
         ng-repeat="crum in $ctrl.crums track by $index"
         ng-class="{'uk-active': $last}">
-        <a ui-sref="{{crum.stateName}}">{{crum.text}}</a>
+        <a ui-sref="{{crum.state}}">{{crum.text}}</a>
     </li>
 </ul>

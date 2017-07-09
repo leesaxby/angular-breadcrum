@@ -4,4 +4,18 @@ import childTwo from './childTwo/childTwo.component.js';
 
 export default angular.module('childTwo', [router])
         .component('childTwo', childTwo)
-        .name
+        .config(function ($stateProvider) {
+            $stateProvider
+                .state('main.childTwo', {
+                    url: '/childTwo',
+                    views: {
+                        'main@': {
+                            component: 'childTwo'
+                        },
+                        'breadcrum@': {
+                            component: 'breadcrum'
+                        }
+                    }
+                })
+        }).name;
+
